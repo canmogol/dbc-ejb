@@ -9,7 +9,6 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
-import java.util.Optional;
 
 
 @Path("/city")
@@ -32,7 +31,6 @@ public class CityResource {
     @GET
     @Path("/create/{name}")
     public CityDTO create(@PathParam("name") String name) {
-        Optional<CityDTO> cityDTOOptional = null;
         try {
             return cityServiceEngine.create(name);
         } catch (Exception e) {
