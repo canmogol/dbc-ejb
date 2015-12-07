@@ -7,6 +7,7 @@ import com.fererlab.core.annotation.Contracted;
 import com.fererlab.core.annotation.Ensures;
 import com.fererlab.core.annotation.Invariant;
 import com.fererlab.core.annotation.Requires;
+import com.fererlab.core.interceptor.ContractException;
 import com.fererlab.core.interceptor.DBCInterceptor;
 import com.fererlab.core.service.GenericService;
 
@@ -33,7 +34,6 @@ public class CityServiceEngineImpl implements CityServiceEngine {
     @EJB(name = "GenericServiceImpl")
     private GenericService<City, Integer> cityService;
 
-
     @Requires({
             "params[0]!=null",
             "params[0]!=\"\""
@@ -43,7 +43,7 @@ public class CityServiceEngineImpl implements CityServiceEngine {
             "result.name==params[0]"
     })
     @Override
-    public CityDTO create(String name) {
+    public CityDTO create(String name) throws ContractException {
 
         // create city object
         City city = new City();
@@ -69,7 +69,7 @@ public class CityServiceEngineImpl implements CityServiceEngine {
             "result.name==params[1]"
     })
     @Override
-    public CityDTO update(Integer id, String name) {
+    public CityDTO update(Integer id, String name) throws ContractException{
         City city = cityService.findById(City.class, id);
         city.setName(name);
         cityService.update(city);
