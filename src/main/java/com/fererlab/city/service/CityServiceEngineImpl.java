@@ -7,7 +7,6 @@ import com.fererlab.core.annotation.Contracted;
 import com.fererlab.core.annotation.Ensures;
 import com.fererlab.core.annotation.Invariant;
 import com.fererlab.core.annotation.Requires;
-import com.fererlab.core.interceptor.ContractException;
 import com.fererlab.core.interceptor.DBCInterceptor;
 import com.fererlab.core.service.GenericService;
 
@@ -43,7 +42,7 @@ public class CityServiceEngineImpl implements CityServiceEngine {
             "result.name==params[0]"
     })
     @Override
-    public CityDTO create(String name) throws ContractException {
+    public CityDTO create(String name) throws Exception {
 
         // create city object
         City city = new City();
@@ -69,7 +68,7 @@ public class CityServiceEngineImpl implements CityServiceEngine {
             "result.name==params[1]"
     })
     @Override
-    public CityDTO update(Integer id, String name) throws ContractException{
+    public CityDTO update(Integer id, String name) throws Exception {
         City city = cityService.findById(City.class, id);
         city.setName(name);
         cityService.update(city);

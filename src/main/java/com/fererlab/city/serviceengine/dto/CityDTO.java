@@ -3,11 +3,18 @@ package com.fererlab.city.serviceengine.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class CityDTO {
+public class CityDTO extends BaseDTO {
 
     private Integer id;
-
     private String name;
+
+    public CityDTO() {
+        super(StatusEnum.SUCCESS);
+    }
+
+    public CityDTO(StatusEnum statusEnum) {
+        super(statusEnum);
+    }
 
     public String getName() {
         return name;
