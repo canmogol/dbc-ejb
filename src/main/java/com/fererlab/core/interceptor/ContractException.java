@@ -3,19 +3,18 @@ package com.fererlab.core.interceptor;
 public class ContractException extends Exception {
 
     private String expression;
-    private Object result;
 
-    public ContractException(String message, String expression, Object result) {
+    public ContractException(String message, String expression) {
         super(message);
         this.expression = expression;
-        this.result = result;
     }
 
     public String getExpression() {
         return expression;
     }
 
-    public Object getResult() {
-        return result;
+    @Override
+    public String getMessage() {
+        return super.getMessage() + " " + expression;
     }
 }

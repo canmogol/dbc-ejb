@@ -38,7 +38,7 @@ public class DBCInterceptor {
                 for (String expression : expressions) {
                     Object evaluationResult = getScriptEngine().eval(expression);
                     if (evaluationResult == null || Boolean.FALSE.equals(evaluationResult)) {
-                        throw new ContractException("Failed at Requires Expression", expression, evaluationResult);
+                        throw new ContractException("Failed at @Requires Expression", expression);
                     }
                 }
             }
@@ -59,7 +59,7 @@ public class DBCInterceptor {
                 for (String expression : ensureExpressions) {
                     Object evaluationResult = getScriptEngine().eval(expression);
                     if (evaluationResult == null || Boolean.FALSE.equals(evaluationResult)) {
-                        throw new ContractException("Failed at Ensures Expression", expression, evaluationResult);
+                        throw new ContractException("Failed at @Ensures Expression", expression);
                     }
                 }
             }
@@ -72,7 +72,7 @@ public class DBCInterceptor {
                 for (String expression : expressions) {
                     Object evaluationResult = getScriptEngine().eval(expression);
                     if (evaluationResult == null || Boolean.FALSE.equals(evaluationResult)) {
-                        throw new ContractException("Failed at Invariant Expression", expression, evaluationResult);
+                        throw new ContractException("Failed at @Invariant Expression", expression);
                     }
                 }
             }
