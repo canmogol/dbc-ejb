@@ -1,2 +1,2 @@
 # dbc-ejb
-Design by Contract implementation with EJB
+Design by Contract implementation for EJB
